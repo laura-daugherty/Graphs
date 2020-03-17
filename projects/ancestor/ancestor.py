@@ -250,26 +250,17 @@ from util import Stack, Queue
 
 def earliest_ancestor(ancestors, starting_node, path=None):
   #BUILD GRAPH
-  graph = Graph()
-  for ancestor in ancestors:
-    graph.add_vertex(ancestor[0])
-    graph.add_vertex(ancestor[1])
-    graph.add_edge(ancestor[1], ancestor[0])
+  
   #TRAVERSE GRAPH
-  if path is None:
-    path = []
+
   # Create an empty stack
-  s = Stack()
   # Push the starting vertex_id to the stack
-  s.push([starting_node])
   # Create an empty set to store visited nodes
   # visited = set()
   # While the stack is not empty..
-  longest = path
-  while s.size() > 0:
+
       # Pop the first vertex
-      pathPop = s.pop()
-      v = pathPop[-1]
+
       # Check if it's been visited
       # If it has not been visited...
       # pathCopy = path.copy()
@@ -282,19 +273,7 @@ def earliest_ancestor(ancestors, starting_node, path=None):
       # visited.add(v)
       # print("visited", visited)
           # Then push all neighbors to the top of the stack
-      for neighbor in graph.get_neighbors(v):
-          s.push(pathPop + [neighbor])
-      print("pathPop", pathPop)
-      print("longest", longest)
-      if len(pathPop) > len(longest):
-            longest = pathPop
-            print("longest", longest)
-      if len(pathPop) == len(longest):
-        if pathPop[-1] < longest[-1]:
-          longest = pathPop
-      if len(longest) == 1:
-        longest = [-1]
-  return longest[-1]
+
         
         
 
